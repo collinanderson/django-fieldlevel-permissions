@@ -59,7 +59,7 @@ class FieldLevelAdmin(admin.ModelAdmin):
         self.inline_instances = []
         for inline_class in self.inlines:
             if(self.can_change_inline(request, obj, inline_class.__name__)):
-                inline_instance = inline_class(self.model, self)
+                inline_instance = inline_class(self.model, self.admin_site)
                 self.inline_instances.append(inline_instance)
         
         return form
